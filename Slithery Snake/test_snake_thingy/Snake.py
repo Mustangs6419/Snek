@@ -93,6 +93,7 @@ class App:
     
     player = 0
     apple = 0
+    score = 0
     canvasWidth=600
     canvasHeight=400
     
@@ -108,6 +109,7 @@ class App:
         self.game = Game()
         self.player = Player(3) 
         self.apple = Apple(3,5)
+        self.score = 0 
     def on_init(self):
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.canvasWidth,self.canvasHeight), pygame.HWSURFACE)
@@ -130,6 +132,8 @@ class App:
                 self.apple.x = randint(2,9) * 44
                 self.apple.y = randint(2,9) * 44
                 self.player.length = self.player.length + 1
+                score = self.player.length / 2
+                print(score)
  
  
         # This is what causes the snake to die if it touches itself

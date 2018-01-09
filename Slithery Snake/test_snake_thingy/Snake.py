@@ -11,7 +11,7 @@ from tkinter import *
 class Apple:
     x = 0
     y = 0
-    step = 44
+    step = 120
  
     def __init__(self,x,y):
         self.x = x * self.step
@@ -94,8 +94,8 @@ class App:
     player = 0
     apple = 0
     score = 0
-    canvasWidth=600
-    canvasHeight=400
+    canvasWidth=800
+    canvasHeight=700
     
     
     
@@ -185,9 +185,36 @@ class App:
             time.sleep (50.0 / 1000.0);
         self.on_cleanup()
         
-        
+
+    
  
  
 if __name__ == "__main__" :
     theApp = App()
     theApp.on_execute()
+    
+snake_width = 225
+snake_height = 225
+    
+display_width = canvasWidth
+display_height = canvasHeight
+
+def gameExit():
+    isCollision = True
+    exit()
+    
+gamedisplay = pygame.display.set_mode((display_width,display_height))
+
+if player > gamedisplay:
+    gameExit = True
+    exit()
+    
+if player > gamedisplay:
+    gameExit = True
+    exit()
+    
+
+
+    
+
+    

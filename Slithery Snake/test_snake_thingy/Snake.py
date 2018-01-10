@@ -11,7 +11,7 @@ from tkinter import *
 class Apple:
     x = 0
     y = 0
-    step = 120
+    step = 44
  
     def __init__(self,x,y):
         self.x = x * self.step
@@ -19,6 +19,18 @@ class Apple:
  
     def draw(self, surface, image):
         surface.blit(image,(self.x, self.y)) 
+
+class Poison:
+    x = 0
+    y = 0
+    step = 44
+ 
+    def __init__(self,x,y):
+        self.x = x * self.step
+        self.y = y * self.step
+ 
+    def draw(self, surface, image):
+        surface.blit(image,(self.x, self.y))  
  
  
 class Player:
@@ -94,9 +106,10 @@ class App:
     
     player = 0
     apple = 0
+    poison = 5 
     score = 0
-    canvasWidth=600
-    canvasHeight=700
+    canvasWidth=700
+    canvasHeight=600
     
     
     
@@ -107,9 +120,11 @@ class App:
         self._display_surf = None
         self._image_surf = None
         self._apple_surf = None
+        self._poison_surf = None 
         self.game = Game()
         self.player = Player(3) 
         self.apple = Apple(3,5)
+        self.poison = Poison(6,10)
         self.score = 0 
     def on_init(self):
         pygame.init()
@@ -119,6 +134,7 @@ class App:
         self._running = True
         self._image_surf = pygame.image.load("pygame.png").convert()
         self._apple_surf = pygame.image.load("block.jpg").convert()
+        self._poison_surf = pygame.image.load("apple2.jpg").convert()
  
     def on_event(self, event):
         if event.type == QUIT:
@@ -132,19 +148,33 @@ class App:
             if self.game.isCollision(self.apple.x,self.apple.y,self.player.x[i], self.player.y[i],44):
                 self.apple.x = randint(2,9) * 44
                 self.apple.y = randint(2,9) * 44
+                self.poison.x = randint (2,9) * 40
+                self.poison.y = randint (2,9) * 40
                 self.player.length = self.player.length + 1
                 score = self.player.length / 2 
-                if score > 10:
-                    step = 88
-                if score > 20:
-                    step = 132
-                if score > 30:
-                    step = 176
-                if score > 40:
-                    step = 220 
                 
-                
-                
+        #this is the code for the posin apple which decreases the size     
+        for i in range(0,self.player.length):
+            if self.game.isCollision(self.poison.x,self.poison.y,self.player.x[i], self.player.y[i],44):
+                self.poison.x = randint(2,9) * 44
+                self.poison.y = randint(2,9) * 44
+                self.apple.x = randint(2,9) * 44
+                self.apple.y = randint(2,9) * 44 
+                self.player.length = self.player.length - 2
+                score = self.player.length 
+                if score < 2:
+                    self.game.isCollision(self.player.x[0],self.player.y[0],self.player.x[i], self.player.y[i],40)
+                    final_score = self.game.isCollision
+                    final_score = self.player.length / 2 
+                    root = Tk()
+                    T = Text(root, width = 20, height = 5)
+                    T.pack()
+                    T.insert(END, "TOO SMALL-")
+                    T.insert(END,  final_score)
+                    mainloop()
+                    exit(0)   
+                    
+                        
  
  
         # This is what causes the snake to die if it touches itself
@@ -165,6 +195,7 @@ class App:
         self._display_surf.fill((0,0,0))
         self.player.draw(self._display_surf, self._image_surf)
         self.apple.draw(self._display_surf, self._apple_surf)
+        self.poison.draw(self._display_surf, self._poison_surf)
         pygame.display.flip()
  
     def on_cleanup(self):
@@ -174,7 +205,7 @@ class App:
         if self.on_init() == False:
             self._running = False
  
-        while( self._running ):
+        while(self._running):
             pygame.event.pump()
             keys = pygame.key.get_pressed() 
  
@@ -199,36 +230,9 @@ class App:
             time.sleep (50.0 / 1000.0);
         self.on_cleanup()
         
-
-    
+        
  
  
 if __name__ == "__main__" :
     theApp = App()
     theApp.on_execute()
-    
-snake_width = 225
-snake_height = 225
-    
-display_width = canvasWidth
-display_height = canvasHeight
-
-def gameExit():
-    isCollision = True
-    exit()
-    
-gamedisplay = pygame.display.set_mode((display_width,display_height))
-
-if player > gamedisplay:
-    gameExit = True
-    exit()
-    
-if player > gamedisplay:
-    gameExit = True
-    exit()
-    
-
-
-    
-
-    

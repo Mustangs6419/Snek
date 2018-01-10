@@ -111,9 +111,6 @@ class App:
     canvasWidth=700
     canvasHeight=600
     
-    
-    
-   
  
     def __init__(self):
         self._running = True
@@ -124,8 +121,13 @@ class App:
         self.game = Game()
         self.player = Player(3) 
         self.apple = Apple(3,5)
+<<<<<<< HEAD
         self.poison = Poison(6,10)
         self.score = 0 
+=======
+        self.score = 0
+        
+>>>>>>> e506f93c6fcac359bc97a5161461839e7ca2948f
     def on_init(self):
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.canvasWidth,self.canvasHeight), pygame.HWSURFACE)
@@ -134,8 +136,12 @@ class App:
         self._running = True
         self._image_surf = pygame.image.load("pygame.png").convert()
         self._apple_surf = pygame.image.load("block.jpg").convert()
+<<<<<<< HEAD
         self._poison_surf = pygame.image.load("apple2.jpg").convert()
  
+=======
+        
+>>>>>>> e506f93c6fcac359bc97a5161461839e7ca2948f
     def on_event(self, event):
         if event.type == QUIT:
             self._running = False
@@ -185,11 +191,37 @@ class App:
                 root = Tk()
                 T = Text(root, width = 20, height = 5)
                 T.pack()
+<<<<<<< HEAD
+                T.insert(END, "CRASHED")
+                self._running = False
+=======
                 T.insert(END, "CRASHED-")
                 T.insert(END,  final_score)
+>>>>>>> 527de2c01d8f77b5b3a40c39fbe21e5ad761560f
                 mainloop()
                 exit(0)        
         pass
+
+
+        # This is what creates the boundaries
+        if self.player.x[0] > self.canvasWidth or self.player.x[0] < 0:
+            root = Tk()
+            T = Text(root, height=2, width=30)
+            T.pack()
+            T.insert(END, "CRASHED, YOU RAN INTO THE WALL (GREAT JOB)")
+            self._running = False
+            mainloop()
+            exit(0)   
+        
+        if self.player.y[0] > self.canvasHeight or self.player.y[0] < 0:
+            root = Tk()
+            T = Text(root, height=2, width=30)
+            T.pack()
+            T.insert(END, "CRASHED, YOU RAN INTO THE WALL (GREAT JOB)")
+            self._running = False
+            mainloop()
+            exit(0)   
+        
  
     def on_render(self):
         self._display_surf.fill((0,0,0))
@@ -205,7 +237,12 @@ class App:
         if self.on_init() == False:
             self._running = False
  
+<<<<<<< HEAD
         while(self._running):
+=======
+        while( self._running ):
+            # theApp.on_execute() # why was this included?
+>>>>>>> e506f93c6fcac359bc97a5161461839e7ca2948f
             pygame.event.pump()
             keys = pygame.key.get_pressed() 
  
@@ -235,4 +272,28 @@ class App:
  
 if __name__ == "__main__" :
     theApp = App()
+<<<<<<< HEAD
     theApp.on_execute()
+=======
+    theApp.on_execute()
+    
+snake_width = 225
+snake_height = 225
+    
+display_width = canvasWidth
+display_height = canvasHeight
+
+def gameExit():
+    isCollision = True
+    exit()
+    
+gamedisplay = pygame.display.set_mode((display_width,display_height))
+
+
+    
+
+
+    
+
+    
+>>>>>>> e506f93c6fcac359bc97a5161461839e7ca2948f

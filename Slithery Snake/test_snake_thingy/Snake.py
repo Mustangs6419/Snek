@@ -30,7 +30,8 @@ class Player:
  
     updateCountMax = 2
     updateCount = 0
- 
+
+    
     def __init__(self, length):
        self.length = length
        for i in range(0,2000):
@@ -94,7 +95,7 @@ class App:
     player = 0
     apple = 0
     score = 0
-    canvasWidth=800
+    canvasWidth=600
     canvasHeight=700
     
  
@@ -112,7 +113,7 @@ class App:
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.canvasWidth,self.canvasHeight), pygame.HWSURFACE)
  
-        pygame.display.set_caption('Pygame pythonspot.com example')
+        pygame.display.set_caption('Slithery snek')
         self._running = True
         self._image_surf = pygame.image.load("pygame.png").convert()
         self._apple_surf = pygame.image.load("block.jpg").convert()
@@ -130,18 +131,35 @@ class App:
                 self.apple.x = randint(2,9) * 44
                 self.apple.y = randint(2,9) * 44
                 self.player.length = self.player.length + 1
-                score = self.player.length / 2
-                print(score)
+                score = self.player.length / 2 
+                if score > 10:
+                    step = 88
+                if score > 20:
+                    step = 132
+                if score > 30:
+                    step = 176
+                if score > 40:
+                    step = 220 
+                
+                
+                
  
  
         # This is what causes the snake to die if it touches itself
         for i in range(2,self.player.length):
             if self.game.isCollision(self.player.x[0],self.player.y[0],self.player.x[i], self.player.y[i],40):
+                final_score = self.game.isCollision
+                final_score = self.player.length / 2 
                 root = Tk()
-                T = Text(root, height=2, width=30)
+                T = Text(root, width = 20, height = 5)
                 T.pack()
+<<<<<<< HEAD
                 T.insert(END, "CRASHED")
                 self._running = False
+=======
+                T.insert(END, "CRASHED-")
+                T.insert(END,  final_score)
+>>>>>>> 527de2c01d8f77b5b3a40c39fbe21e5ad761560f
                 mainloop()
                 exit(0)        
         pass

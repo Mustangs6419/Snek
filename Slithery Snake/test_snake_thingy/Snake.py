@@ -121,10 +121,19 @@ class App:
         self.game = Game()
         self.player = Player(3) 
         self.apple = Apple(3,5)
+<<<<<<< HEAD
         self.poison = Poison(6,10)
         self.score = 0 
         self.score = 0
         
+=======
+
+        self.poison = Poison(6,10)
+        self.score = 0 
+
+        
+
+>>>>>>> 56015281a93b52078e699c5b874d16afa4299860
     def on_init(self):
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.canvasWidth,self.canvasHeight), pygame.HWSURFACE)
@@ -133,8 +142,15 @@ class App:
         self._running = True
         self._image_surf = pygame.image.load("pygame.png").convert()
         self._apple_surf = pygame.image.load("block.jpg").convert()
+<<<<<<< HEAD
         self._poison_surf = pygame.image.load("apple2.jpg").convert()
  
+=======
+
+        self._poison_surf = pygame.image.load("apple2.jpg").convert()
+
+        
+>>>>>>> 56015281a93b52078e699c5b874d16afa4299860
 
     def on_event(self, event):
         if event.type == QUIT:
@@ -185,10 +201,20 @@ class App:
                 root = Tk()
                 T = Text(root, width = 20, height = 5)
                 T.pack()
+<<<<<<< HEAD
                 T.insert(END, "CRASHED")
                 self._running = False
                 T.insert(END, "CRASHED-")
                 T.insert(END,  final_score)
+=======
+
+                T.insert(END, "CRASHED")
+                self._running = False
+
+                T.insert(END, "CRASHED-")
+                T.insert(END,  final_score)
+
+>>>>>>> 56015281a93b52078e699c5b874d16afa4299860
                 mainloop()
                 exit(0)        
         pass
@@ -228,8 +254,13 @@ class App:
         if self.on_init() == False:
             self._running = False
 
+<<<<<<< HEAD
         while(self._running):
             # theApp.on_execute() # why was this included?
+=======
+        while( self._running ):
+
+>>>>>>> 56015281a93b52078e699c5b874d16afa4299860
             pygame.event.pump()
             keys = pygame.key.get_pressed() 
  
@@ -259,8 +290,13 @@ class App:
  
 if __name__ == "__main__" :
     theApp = App()
+<<<<<<< HEAD
     theApp.on_execute()
+=======
+
+>>>>>>> 56015281a93b52078e699c5b874d16afa4299860
     theApp.on_execute()
+
     
 snake_width = 225
 snake_height = 225
@@ -275,3 +311,12 @@ def gameExit():
 gamedisplay = pygame.display.set_mode((display_width,display_height))
 
 
+<<<<<<< HEAD
+=======
+    
+
+
+    
+
+
+>>>>>>> 56015281a93b52078e699c5b874d16afa4299860

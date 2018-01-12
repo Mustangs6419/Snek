@@ -122,22 +122,10 @@ class App:
         self._apple_surf = None
         self._poison_surf = None 
         self.game = Game()
-        self.player = Player(3) 
+        self.player = player(3) 
         self.apple = Apple(3,5)
-<<<<<<< HEAD
         self.poison = Poison(6,10)
         self.score = 0 
-=======
-
-        self.poison = Poison(6,10)
-        self.score = 0 
-        self.score = 0
-
-
-        
-
-
->>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4
     def on_init(self):
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.canvasWidth,self.canvasHeight), pygame.HWSURFACE)
@@ -146,20 +134,8 @@ class App:
         self._running = True
         self._image_surf = pygame.image.load("pygame.png").convert()
         self._apple_surf = pygame.image.load("block.jpg").convert()
-<<<<<<< HEAD
         self._poison_surf = pygame.image.load("apple2.jpg").convert()
  
-=======
-
-        self._poison_surf = pygame.image.load("apple2.jpg").convert()
- 
-
-
-
-
-
-
->>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4
     def on_event(self, event):
         if event.type == QUIT:
             self._running = False
@@ -210,10 +186,6 @@ class App:
                 T = Text(root, width = 20, height = 5)
                 T.pack()
                 T.insert(END, "CRASHED-")
-<<<<<<< HEAD
-=======
-                self._running = False
->>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4
                 T.insert(END,  final_score)
                 mainloop()
                 exit(0)        
@@ -232,14 +204,8 @@ class App:
     def on_execute(self):
         if self.on_init() == False:
             self._running = False
-<<<<<<< HEAD
  
         while(self._running):
-=======
-
-
-        while( self._running ):
->>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4
             pygame.event.pump()
             keys = pygame.key.get_pressed() 
  
@@ -281,7 +247,6 @@ class Second:
            self.x.append(-100)
            self.y.append(-100)
  
-<<<<<<< HEAD
        # initial positions, no collision.
        self.x[1] = 1*44
        self.x[2] = 2*44
@@ -335,13 +300,7 @@ class Game:
        
 
 class App:
-=======
-if __name__ == "__main__" :
-    theApp = App()
-    theApp.on_execute()
->>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4
     
-    player = 0
     second = 0
     apple = 0
     poison = 5 
@@ -349,14 +308,8 @@ if __name__ == "__main__" :
     canvasWidth=700
     canvasHeight=600
     
-<<<<<<< HEAD
-=======
-gamedisplay = pygame.display.set_mode((display_width,display_height))
-
->>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4
     
     
-<<<<<<< HEAD
    
  
     def __init__(self):
@@ -366,7 +319,6 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
         self._apple_surf = None
         self._poison_surf = None 
         self.game = Game()
-        self.player = Player(3) 
         self.second = Second(3) 
         self.apple = Apple(3,5)
         self.poison = Poison(6,10)
@@ -480,6 +432,3 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
 if __name__ == "__main__" :
     theApp = App()
     theApp.on_execute()
-=======
-
->>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4

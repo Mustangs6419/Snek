@@ -239,10 +239,7 @@ class App:
                 T = Text(root, width = 20, height = 5)
                 T.pack()
                 T.insert(END, "CRASHED-")
-<<<<<<< HEAD
-=======
                 self._running = False
->>>>>>> 6b8138dcf47130eac2d654695db3e3ddbf43de3b
                 T.insert(END,  final_score)
                 mainloop()
                 exit(0)        
@@ -262,11 +259,6 @@ class App:
     def on_execute(self):
         if self.on_init() == False:
             self._running = False
-<<<<<<< HEAD
- 
-=======
-            
->>>>>>> 6b8138dcf47130eac2d654695db3e3ddbf43de3b
         while(self._running):
             pygame.event.pump()
             keys = pygame.key.get_pressed() 
@@ -293,15 +285,12 @@ class App:
         self.on_cleanup()
         
 
-<<<<<<< HEAD
+
  
  
-if __name__ == "__main__" :
-    theApp = App()
-    theApp.on_execute()
-=======
+
 if __name__ == "__main__":
     theApp = App()
     theApp.on_execute()
         
->>>>>>> 6b8138dcf47130eac2d654695db3e3ddbf43de3b
+

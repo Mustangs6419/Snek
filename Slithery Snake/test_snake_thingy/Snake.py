@@ -302,18 +302,18 @@ class Game:
        
 
 class App:
-if __name__ == "__main__" :
-    theApp = App()
-    theApp.on_execute()
-    
-    player = 0
-    apple = 0
-    poison = 5 
-    score = 0
-    canvasWidth=700
-    canvasHeight=600
+    if __name__ == "__main__" :
+        theApp = App()
+        theApp.on_execute()
+        
+        player = 0
+        apple = 0
+        poison = 5 
+        score = 0
+        canvasWidth=700
+        canvasHeight=600
 
-gamedisplay = pygame.display.set_mode((display_width,display_height))
+        gamedisplay = pygame.display.set_mode((display_width,display_height))
 
     def __init__(self):
         self._running = True

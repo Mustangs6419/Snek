@@ -186,6 +186,10 @@ class App:
                 T = Text(root, width = 20, height = 5)
                 T.pack()
                 T.insert(END, "CRASHED-")
+<<<<<<< HEAD
+=======
+                self._running = False
+>>>>>>> bc1638b4825cb61b6a7130cdc81fe1e57953d334
                 T.insert(END,  final_score)
                 mainloop()
                 exit(0)        
@@ -204,7 +208,11 @@ class App:
     def on_execute(self):
         if self.on_init() == False:
             self._running = False
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> bc1638b4825cb61b6a7130cdc81fe1e57953d334
         while(self._running):
             pygame.event.pump()
             keys = pygame.key.get_pressed() 
@@ -246,7 +254,11 @@ class Second:
        for i in range(0,2000):
            self.x.append(-100)
            self.y.append(-100)
+<<<<<<< HEAD
  
+=======
+            
+>>>>>>> bc1638b4825cb61b6a7130cdc81fe1e57953d334
        # initial positions, no collision.
        self.x[1] = 1*44
        self.x[2] = 2*44
@@ -300,6 +312,7 @@ class Game:
        
 
 class App:
+<<<<<<< HEAD
     
     second = 0
     apple = 0
@@ -312,6 +325,21 @@ class App:
     
    
  
+=======
+    if __name__ == "__main__" :
+        theApp = App()
+        theApp.on_execute()
+        
+        player = 0
+        apple = 0
+        poison = 5 
+        score = 0
+        canvasWidth=700
+        canvasHeight=600
+
+        gamedisplay = pygame.display.set_mode((display_width,display_height))
+
+>>>>>>> bc1638b4825cb61b6a7130cdc81fe1e57953d334
     def __init__(self):
         self._running = True
         self._display_surf = None
@@ -427,8 +455,11 @@ class App:
             time.sleep (50.0 / 1000.0);
         self.on_cleanup()
         
+<<<<<<< HEAD
  
  
 if __name__ == "__main__" :
     theApp = App()
     theApp.on_execute()
+=======
+>>>>>>> bc1638b4825cb61b6a7130cdc81fe1e57953d334

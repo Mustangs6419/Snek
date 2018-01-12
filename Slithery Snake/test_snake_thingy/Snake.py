@@ -342,6 +342,7 @@ if __name__ == "__main__" :
 >>>>>>> 37e1cf60f7098c0397624d2b318fc556859a47d4
     
     player = 0
+    second = 0
     apple = 0
     poison = 5 
     score = 0
@@ -366,6 +367,7 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
         self._poison_surf = None 
         self.game = Game()
         self.player = Player(3) 
+        self.second = Second(3) 
         self.apple = Apple(3,5)
         self.poison = Poison(6,10)
         self.score = 0 
@@ -375,7 +377,7 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
  
         pygame.display.set_caption('Slithery snek')
         self._running = True
-        self._image_surf = pygame.image.load("pygame.png").convert()
+        self._image_surf = pygame.image.load("Snake2.jpg").convert()
         self._apple_surf = pygame.image.load("block.jpg").convert()
         self._poison_surf = pygame.image.load("apple2.jpg").convert()
  
@@ -387,28 +389,28 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
         self.player.update()
  
         # This is what adds length to the snake when it eats and apple
-        for i in range(0,self.player.length):
-            if self.game.isCollision(self.apple.x,self.apple.y,self.player.x[i], self.player.y[i],44):
+        for i in range(0,self.second.length):
+            if self.game.isCollision(self.apple.x,self.apple.y,self.second.x[i], self.second.y[i],44):
                 self.apple.x = randint(2,9) * 44
                 self.apple.y = randint(2,9) * 44
                 self.poison.x = randint (2,9) * 40
                 self.poison.y = randint (2,9) * 40
-                self.player.length = self.player.length + 1
-                score = self.player.length / 2 
+                self.second.length = self.second.length + 1
+                score = self.second.length / 2 
                 
         #this is the code for the posin apple which decreases the size     
-        for i in range(0,self.player.length):
-            if self.game.isCollision(self.poison.x,self.poison.y,self.player.x[i], self.player.y[i],44):
+        for i in range(0,self.second.length):
+            if self.game.isCollision(self.poison.x,self.poison.y,self.second.x[i], self.second.y[i],44):
                 self.poison.x = randint(2,9) * 44
                 self.poison.y = randint(2,9) * 44
                 self.apple.x = randint(2,9) * 44
                 self.apple.y = randint(2,9) * 44 
-                self.player.length = self.player.length - 2
-                score = self.player.length 
+                self.second.length = self.second.length - 2
+                score = self.second.length 
                 if score < 2:
-                    self.game.isCollision(self.player.x[0],self.player.y[0],self.player.x[i], self.player.y[i],40)
+                    self.game.isCollision(self.second.x[0],self.second.y[0],self.second.x[i], self.second.y[i],40)
                     final_score = self.game.isCollision
-                    final_score = self.player.length / 2 
+                    final_score = self.second.length / 2 
                     root = Tk()
                     T = Text(root, width = 20, height = 5)
                     T.pack()
@@ -421,10 +423,10 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
  
  
         # This is what causes the snake to die if it touches itself
-        for i in range(2,self.player.length):
-            if self.game.isCollision(self.player.x[0],self.player.y[0],self.player.x[i], self.player.y[i],40):
+        for i in range(2,self.second.length):
+            if self.game.isCollision(self.second.x[0],self.second.y[0],self.second.x[i], self.second.y[i],40):
                 final_score = self.game.isCollision
-                final_score = self.player.length / 2 
+                final_score = self.second.length / 2 
                 root = Tk()
                 T = Text(root, width = 20, height = 5)
                 T.pack()
@@ -436,7 +438,7 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
  
     def on_render(self):
         self._display_surf.fill((0,0,0))
-        self.player.draw(self._display_surf, self._image_surf)
+        self.second.draw(self._display_surf, self._image_surf)
         self.apple.draw(self._display_surf, self._apple_surf)
         self.poison.draw(self._display_surf, self._poison_surf)
         pygame.display.flip()
@@ -453,7 +455,7 @@ gamedisplay = pygame.display.set_mode((display_width,display_height))
             keys = pygame.key.get_pressed() 
  
             if (keys[K_RIGHT]):
-                self.player.moveRight()
+                self.second.moveRight()
  
             if (keys[K_LEFT]):
                 self.player.moveLeft()

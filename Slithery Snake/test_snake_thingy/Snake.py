@@ -126,7 +126,6 @@ class App:
         self.apple = Apple(3,5)
         self.poison = Poison(6,10)
         self.score = 0 
-
     def on_init(self):
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.canvasWidth,self.canvasHeight), pygame.HWSURFACE)
@@ -140,25 +139,7 @@ class App:
     def on_event(self, event):
         if event.type == QUIT:
             self._running = False
-            
-# This is what creates the boundaries
-        if self.player.x[0] > self.canvasWidth or self.player.x[0] < 0:
-            root = Tk()
-            T = Text(root, height=2, width=30)
-            T.pack()
-            T.insert(END, "CRASHED, YOU RAN INTO THE WALL (GREAT JOB)")
-            self._running = False
-            mainloop()
-            exit(0)   
-        
-        if self.player.y[0] > self.canvasHeight or self.player.y[0] < 0:
-            root = Tk()
-            T = Text(root, height=2, width=30)
-            T.pack()
-            T.insert(END, "CRASHED, YOU RAN INTO THE WALL (GREAT JOB)")
-            self._running = False
-            mainloop()
-            exit(0)   
+    # This is what creates the boundaries  
  
     def on_loop(self):
         self.player.update()
@@ -171,7 +152,32 @@ class App:
                 self.poison.x = randint (2,9) * 40
                 self.poison.y = randint (2,9) * 40
                 self.player.length = self.player.length + 1
-                score = self.player.length / 2 
+                score = self.player.length / 2
+                
+                # This is what creates the boundaries
+        if self.player.x[0] > self.canvasWidth or self.player.x[0] < 0:
+            final_score = self.player.length
+            final_score = self.player.length / 2
+            root = Tk()
+            T = Text(root, height=2, width=30)
+            T.pack()
+            T.insert(END, "CRASHED, YOU RAN INTO THE WALL (GREAT JOB)--")
+            T.insert(END, final_score)
+            self._running = False
+            mainloop()
+            exit(0)   
+        
+        if self.player.y[0] > self.canvasHeight or self.player.y[0] < 0:
+            final_score = self.player.length
+            final_score = self.player.length / 2 
+            root = Tk()
+            T = Text(root, height=2, width=30)
+            T.pack()
+            T.insert(END, "CRASHED, YOU RAN INTO THE WALL (GREAT JOB)--")
+            self._running = False
+            T.insert(END, final_score)
+            mainloop()
+            exit(0)   
                 
         #this is the code for the posin apple which decreases the size     
         for i in range(0,self.player.length):
@@ -195,8 +201,6 @@ class App:
                     exit(0)   
                     
                         
- 
- 
         # This is what causes the snake to die if it touches itself
         for i in range(2,self.player.length):
             if self.game.isCollision(self.player.x[0],self.player.y[0],self.player.x[i], self.player.y[i],40):
@@ -225,7 +229,7 @@ class App:
     def on_execute(self):
         if self.on_init() == False:
             self._running = False
-
+            
         while(self._running):
             pygame.event.pump()
             keys = pygame.key.get_pressed() 
@@ -250,4 +254,9 @@ class App:
  
             time.sleep (50.0 / 1000.0);
         self.on_cleanup()
+        
+
+if __name__ == "__main__":
+    theApp = App()
+    theApp.on_execute()
         

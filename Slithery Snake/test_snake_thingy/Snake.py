@@ -116,15 +116,14 @@ class Game:
 
 class App:
     
+    root= Tk()
     player = 0
     apple = 0
     poison = 5
     potion = 0
     score = 0
     canvasWidth=700
-    canvasHeight=600
-    
-    
+    canvasHeight=600    
     
    
  

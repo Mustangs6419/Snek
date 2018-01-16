@@ -112,11 +112,50 @@ class Game:
             if y1 >= y2 and y1 <= y2 + bsize:
                 return True
         return False
+    
+    
+class Color:
+    x = 0
+    y = 0
+    step = 44
+ 
+    def __init__(self,x,y):
+        self.x = x * self.step
+        self.y = y * self.step
+ 
+    def draw(self, surface, image):
+        surface.blit(image,(self.x, self.y))  
+    
+    def update(self):
+ 
+        self.updateCount = self.updateCount + 1
+        if self.updateCount > self.updateCountMax:
+ 
+            for i in range(self.length-1,0,-1):
+                self.x[i] = self.x[i-1]
+                self.y[i] = self.y[i-1]
+
+            # update position of head of snake
+            if self.direction == 0:
+                self.x[0] = self.x[0] + self.step
+            if self.direction == 1:
+                self.x[0] = self.x[0] - self.step
+            if self.direction == 2:
+                self.y[0] = self.y[0] - self.step
+            if self.direction == 3:
+                self.y[0] = self.y[0] + self.step
+ 
+            self.updateCount = 0
+            
+            
+            
+        # adds a different color to the snake        
+        if self.player == 1, 3, 5, 7, 9:
+            
        
 
 class App:
     
-    root= Tk()
     player = 0
     apple = 0
     poison = 5
@@ -152,8 +191,7 @@ class App:
  
     def on_event(self, event):
         if event.type == QUIT:
-            self._running = False
-    # This is what creates the boundaries  
+            self._running = False 
  
     def on_loop(self):
         self.player.update()
@@ -170,7 +208,7 @@ class App:
                 self.player.length = self.player.length + 1
                 score = self.player.length / 2
                 
-                # This is what creates the boundaries
+        # This is what creates the boundaries
         if self.player.x[0] > self.canvasWidth or self.player.x[0] < 0:
             final_score = self.player.length
             final_score = self.player.length / 2
@@ -195,7 +233,7 @@ class App:
             mainloop()
             exit(0)   
                 
-        #this is the code for the posin apple which decreases the size     
+        #this is the code for the poison apple which decreases the size of the snake    
         for i in range(0,self.player.length):
             if self.game.isCollision(self.poison.x,self.poison.y,self.player.x[i], self.player.y[i],44):
                 self.poison.x = randint(2,9) * 44

@@ -149,9 +149,7 @@ class Color:
             
             
             
-        # adds a different color to the snake        
-        if self.player == 1, 3, 5, 7, 9:
-            
+
        
 
 class App:
@@ -161,8 +159,8 @@ class App:
     poison = 5
     potion = 0
     score = 0
-    canvasWidth=700
-    canvasHeight=600    
+    canvasWidth=1600
+    canvasHeight=900    
     
    
  
@@ -170,6 +168,7 @@ class App:
         self._running = True
         self._display_surf = None
         self._image_surf = None
+        self._image2_surf = None
         self._apple_surf = None
         self._poison_surf = None 
         self.game = Game()
@@ -185,9 +184,11 @@ class App:
         pygame.display.set_caption('Slithery snek')
         self._running = True
         self._image_surf = pygame.image.load("pygame.png").convert()
+        self._image2_surf = pygame.image.load("JAPANESEblock.png").convert()
         self._apple_surf = pygame.image.load("block.jpg").convert()
         self._poison_surf = pygame.image.load("apple2.jpg").convert()
         self._potion_surf = pygame.image.load("Snake2.jpg").convert()
+        self._image2_surf = pygame.image.load("JAPANESEblock.png").convert()
  
     def on_event(self, event):
         if event.type == QUIT:
@@ -196,7 +197,7 @@ class App:
     def on_loop(self):
         self.player.update()
  
-        # This is what adds length to the snake when it eats and apple
+        # This is what adds length to the snake when it eats an apple
         for i in range(0,self.player.length):
             if self.game.isCollision(self.apple.x,self.apple.y,self.player.x[i], self.player.y[i],44):
                 self.apple.x = randint(2,9) * 44
@@ -207,6 +208,11 @@ class App:
                 self.potion.y = randint(2,9) * 44
                 self.player.length = self.player.length + 1
                 score = self.player.length / 2
+                
+                # Adds a different color to the snake
+            if self.player.length > 10:
+                self.player.length == self._image2_surf
+                self.player.update()
                 
         # This is what creates the boundaries
         if self.player.x[0] > self.canvasWidth or self.player.x[0] < 0:

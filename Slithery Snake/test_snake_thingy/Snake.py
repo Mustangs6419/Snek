@@ -7,7 +7,7 @@ import tkinter
 from tkinter import *
 
 
-
+#this defines the apple(red) that allows the snake to grow by 2 
 class Apple:
     x = 0
     y = 0
@@ -19,7 +19,7 @@ class Apple:
  
     def draw(self, surface, image):
         surface.blit(image,(self.x, self.y)) 
-
+#this defines the block(blue) that decreases the snake by 2 each time 
 class Poison:
     x = 0
     y = 0
@@ -31,7 +31,7 @@ class Poison:
  
     def draw(self, surface, image):
         surface.blit(image,(self.x, self.y))
-        
+# This is the block(purple)       
 class Potion:
     x = 0
     y = 0
@@ -44,7 +44,7 @@ class Potion:
     def draw(self, surface, image):
         surface.blit(image,(self.x, self.y))  
  
- 
+# This allows the game to have the controls for the snake 
 class Player:
     x = [0]
     y = [0]
@@ -116,7 +116,7 @@ class Game:
 
 class App:
     
-    root= Tk()
+#This is where everything gets define into the game so that we can actually run it 
     player = 0
     apple = 0
     poison = 5
@@ -142,13 +142,13 @@ class App:
     def on_init(self):
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.canvasWidth,self.canvasHeight), pygame.HWSURFACE)
- 
+## all of the imaaaaaaaaaaaaggggggggggggggggggggggeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssss
         pygame.display.set_caption('Slithery snek')
         self._running = True
         self._image_surf = pygame.image.load("pygame.png").convert()
-        self._apple_surf = pygame.image.load("block.jpg").convert()
-        self._poison_surf = pygame.image.load("apple2.jpg").convert()
-        self._potion_surf = pygame.image.load("Snake2.jpg").convert()
+        self._apple_surf = pygame.image.load("apple.png").convert()
+        self._poison_surf = pygame.image.load("poison.jpg").convert()
+        self._potion_surf = pygame.image.load("potion.png").convert()
  
     def on_event(self, event):
         if event.type == QUIT:
@@ -217,7 +217,7 @@ class App:
                     T.insert(END,  final_score)
                     mainloop()
                     exit(0)
-                    
+##               this is the potion (woohooo)     
             if self.game.isCollision(self.potion.x,self.potion.y,self.player.x[i], self.player.y[i],44):
                 self.poison.x = randint(2,9) * 44
                 self.poison.y = randint(2,9) * 44
@@ -243,7 +243,7 @@ class App:
                 mainloop()
                 exit(0)        
         pass
- 
+## this is the function that actuallys draws the block 
     def on_render(self):
         self._display_surf.fill((0,0,0))
         self.player.draw(self._display_surf, self._image_surf)
